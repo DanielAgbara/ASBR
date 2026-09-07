@@ -28,16 +28,7 @@ saveCurrentFigure(assets, 'tha4-tubular.png');
 run_asbr('tha4-conical');
 saveCurrentFigure(assets, 'tha4-conical.png');
 
-addpath(fullfile(root, 'THA2', 'matlab_converted'));
-model = fullfile(root, 'THA2', 'kuka_lbr_iiwa_support', 'urdf', 'lbr_iiwa_14_r820.urdf');
-robot = importrobot(model); robot.DataFormat = 'column';
-f = figure('Color','white');
-show(robot, deg2rad([20;45;-20;-60;10;50;0]), 'Visuals','on','Frames','off');
-axis([-0.25 0.95 -0.6 0.6 -0.05 1.3]); view(135,20);
-title('THA2 | KUKA LBR iiwa 14 R820');
-exportgraphics(f, fullfile(assets,'tha2-kuka.png'), 'Resolution',150);
-close(f);
-rmpath(fullfile(root, 'THA2', 'matlab_converted'));
+export_kuka_preview;
 run_asbr('tha2-ik');
 fprintf('\nASBR MATLAB verification completed. Constrained IK requires Optimization Toolbox.\n');
 end
