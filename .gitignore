@@ -1,0 +1,35 @@
+# Original submissions and local review material
+.local-review/
+/*.pdf
+# Python and editor caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+# MATLAB generated files and project metadata
+*.asv
+*.m~
+*.slxc
+**/resources/project/
+*.prj
+outputs/
+# Early implementations retained locally; supported paths are in each README
+THA1/temp.py
+THA1/test.txt
+THA2/*.py
+THA2/*.ipynb
+THA2/visual/
+THA2/toolbox.ignore
+THA2/matlab_converted/*.mp4
+THA4/PART 1/
+# Generated calibration galleries; curated examples live in docs/assets
+THA3/HW3-PA1/code/*figures/
+THA3/HW3-PA1/code/*.png
+THA3/HW3-PA1/code/*.jpg
+THA3/HW3-PA1/code/*.mat
+THA3/HW3-PA1/code/*.csv
+THA3/HW3-PA1/code/registration_report.txt

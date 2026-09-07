@@ -1,0 +1,155 @@
+function plotSimulationSnapshotsTubular(log, curve_vis, R, view_option)
+
+N = length(log.t);
+
+snapshot_idx = round(linspace(1, N, 5));
+snapshot_idx(1)   = 1;
+snapshot_idx(end) = N;
+
+set(gcf, 'Color', 'w');
+
+vis = initTubularImpedanceVisualizer(curve_vis, log.p(:,1), R, view_option);
+
+% 기존 legend 제거
+delete(findall(gcf, 'Type', 'legend'));
+
+% moving objects 제거
+moving_fields = {'p','pc','u','Fin','Fout','Fspring','Fdamp','Ftan'};
+
+for i = 1:length(vis.handles)
+    h = vis.handles{i};
+    for j = 1:length(moving_fields)
+        fname = moving_fields{j};
+        if isfield(h, fname) && isgraphics(h.(fname))
+            delete(h.(fname));
+        end
+    end
+end
+
+%% ===== SNAPSHOT PLOTTING =====
+for i = 1:length(vis.handles)
+    ax = vis.axs(i);
+    hold(ax, 'on');
+
+    % trajectory
+    plot3(ax, log.p(1,:), log.p(2,:), log.p(3,:), ...
+        'b-', 'LineWidth', 1.5);
+
+    for n = 1:length(snapshot_idx)
+        k = snapshot_idx(n);
+
+        p = log.p(:,k);
+        info = log.info(k);
+
+        % end-effector
+        plot3(ax, p(1), p(2), p(3), ...
+            'ro','MarkerFaceColor','r','MarkerSize',8);
+
+        % closest point
+        plot3(ax, info.p_c(1), info.p_c(2), info.p_c(3), ...
+            'ko','MarkerFaceColor','y','MarkerSize',6);
+
+        % tangent
+        quiver3(ax, ...
+            info.p_c(1), info.p_c(2), info.p_c(3), ...
+            vis.scale.u * info.u(1), ...
+            vis.scale.u * info.u(2), ...
+            vis.scale.u * info.u(3), ...
+            0,'g','LineWidth',2);
+
+        % forces
+        quiver3(ax, p(1), p(2), p(3), ...
+            vis.scale.force * log.F_input(1,k), ...
+            vis.scale.force * log.F_input(2,k), ...
+            vis.scale.force * log.F_input(3,k), ...
+            0,'r','LineWidth',2);
+
+        quiver3(ax, p(1), p(2), p(3), ...
+            vis.scale.force * info.F_spring(1), ...
+            vis.scale.force * info.F_spring(2), ...
+            vis.scale.force * info.F_spring(3), ...
+            0,'Color','magenta','LineWidth',2);
+
+        quiver3(ax, p(1), p(2), p(3), ...
+            vis.scale.force * info.F_damping(1), ...
+            vis.scale.force * info.F_damping(2), ...
+            vis.scale.force * info.F_damping(3), ...
+            0,'Color',[1.0 0.5 0.0],'LineWidth',2);
+
+        quiver3(ax, p(1), p(2), p(3), ...
+            vis.scale.force * info.F_tangent(1), ...
+            vis.scale.force * info.F_tangent(2), ...
+            vis.scale.force * info.F_tangent(3), ...
+            0,'g','LineWidth',2);
+
+        quiver3(ax, p(1), p(2), p(3), ...
+            vis.scale.force * log.F(1,k), ...
+            vis.scale.force * log.F(2,k), ...
+            vis.scale.force * log.F(3,k), ...
+            0,'b','LineWidth',2);
+    end
+
+    grid(ax, 'on');
+end
+
+%% ===== LEGEND (FIXED VERSION) =====
+if strcmpi(view_option, 'all')
+    ax_all = findall(gcf, 'Type', 'axes');
+    ax_leg = [];
+    for i = 1:length(ax_all)
+        if strcmp(get(ax_all(i), 'Visible'), 'off')
+            ax_leg = ax_all(i);
+            break;
+        end
+    end
+    if isempty(ax_leg)
+        ax_leg = vis.axs(1);
+    end
+else
+    ax_leg = vis.axs(1);
+end
+
+hold(ax_leg, 'on');
+
+scale = 0.6;
+
+% dummy handles (핵심: nan 제거)
+h_traj = plot3(ax_leg, [0 1],[0 0],[0 0],'b-','LineWidth',1.5);
+
+h_p  = plot3(ax_leg, 0,0,0,'ro','MarkerFaceColor','r','MarkerSize',8);
+h_pc = plot3(ax_leg, 0,0,0,'ko','MarkerFaceColor','y','MarkerSize',6);
+
+h_u = quiver3(ax_leg, 0,0,0, scale,0,0, 0,'g','LineWidth',2);
+
+h_Fin = quiver3(ax_leg, 0,0,0, scale,0,0, 0,'r','LineWidth',2);
+
+h_Fspring = quiver3(ax_leg, 0,0,0, scale,0,0, 0, ...
+    'Color','magenta','LineWidth',2);
+
+h_Fdamp = quiver3(ax_leg, 0,0,0, scale,0,0, 0, ...
+    'Color',[1.0 0.5 0.0],'LineWidth',2);
+
+h_Ftan = quiver3(ax_leg, 0,0,0, scale,0,0, 0,'g','LineWidth',2);
+
+h_Fout = quiver3(ax_leg, 0,0,0, scale,0,0, 0,'b','LineWidth',2);
+
+legend(ax_leg, ...
+    [h_traj, h_p, h_pc, h_u, h_Fin, h_Fspring, h_Fdamp, h_Ftan, h_Fout], ...
+    {'trajectory', ...
+     'end-effector snapshots', ...
+     'closest point', ...
+     'tangent u', ...
+     'F input', ...
+     'F spring: kD', ...
+     'F damping: -Bv', ...
+     'F tangent', ...
+     'F output'}, ...
+    'Location','layout');
+
+axis(ax_leg, [-1 1 -1 1 -1 1]);
+axis(ax_leg, 'off');
+set(ax_leg, 'Visible', 'off');
+set(ax_leg, 'FontSize', 20);
+
+
+end
