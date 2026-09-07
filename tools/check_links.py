@@ -9,7 +9,7 @@ files = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--e
 failures = []
 for name in set(files):
     p = root / name
-    if p.suffix != '.md':
+    if p.suffix != '.md' or not p.is_file():
         continue
     for target in re.findall(r'\]\(([^)]+)\)', p.read_text(encoding='utf-8')):
         if target.startswith(('http:', 'https:', 'mailto:', '#')):

@@ -19,14 +19,12 @@ The project READMEs connect the implementations to the supplied course reports. 
 
 ## Run locally
 
-Download the repository ZIP and extract it, or, after publication, clone:
+Download the repository ZIP and extract it, or clone:
 
 ```sh
 git clone https://github.com/DanielAgbara/ASBR.git
 cd ASBR
 ```
-
-The URL above is the proposed repository location; it becomes usable after publication.
 
 ### THA1: Python
 
@@ -86,5 +84,3 @@ Original PDF submissions are kept local because some include student identifiers
 ## Credits and reuse
 
 Project authors: Daniel Agbara and Min-Geun Park. Original project code and documentation are released under the [MIT license](LICENSE), allowing use, modification and redistribution with the license notice retained. See [third-party notices](THIRD_PARTY_NOTICES.md) for the separately owned robot assets and course inputs.
-
-For publication and portfolio integration, see [the GitHub guide](docs/PUBLISHING.md) and [portfolio copy](docs/PORTFOLIO.md).

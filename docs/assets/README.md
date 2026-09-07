@@ -10,3 +10,7 @@
 | `tha4-conical.png` | Default conical fixture demo | `addpath('tools'); verify_matlab` |
 
 The MATLAB verification helper exports the current figure from each selected demo; the demos can create other figures as well. Its robot rendering requires Robotics System Toolbox. No AI-generated imagery is used for algorithm results.
+
+## THA2 video previews
+
+`tha2-videos/` contains GIF previews and JPEG posters extracted from the eight original recordings in `THA2/results/videos/`. Regenerate them with `python tools/build_video_previews.py` after installing `tools/requirements-media.txt`. Previews sample up to 32 frames across each recording and use a fixed display interval; they do not preserve original timing. The redundancy robot-motion recording has only one frame, so its preview is a still image.

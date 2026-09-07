@@ -1,6 +1,6 @@
 # Maintenance and validation
 
-## Changes made during portfolio preparation
+## Code and documentation improvements
 
 - Added root and per-project READMEs, source maps, setup instructions and visual provenance.
 - Added a MATLAB launcher with isolated per-project search paths, restored environment state, explicit toolbox checks and output directories.
