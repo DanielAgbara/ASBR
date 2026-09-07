@@ -1,7 +1,4 @@
 # Maintenance and validation
-
-## Changes made during portfolio preparation
-
 - Added root and per-project READMEs, source maps, setup instructions and visual provenance.
 - Added a MATLAB launcher with isolated per-project search paths, restored environment state, explicit toolbox checks and output directories.
 - Made URDF/data paths independent of the working directory. Unknown-dataset results now save in the output directory instead of overwriting supplied reference answers.
