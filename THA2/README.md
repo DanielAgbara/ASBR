@@ -8,7 +8,7 @@ Model a seven-degree-of-freedom **KUKA LBR iiwa 14 R820** using screw axes and t
 
 ## Video gallery
 
-All eight original THA2 recordings are included below. Select a preview or its **Watch MP4** link to open the full recording. The looping previews use sampled frames and different playback timing; the MP4 files preserve the original recordings. These experiments show the recorded solver behavior, including tracking errors, rather than establishing convergence for every example.
+The four recordings from `results/videos` are included below: Circle, Helix, Square and Raster. Select a preview or its **Watch MP4** link to open the full recording. The looping previews use sampled frames and different playback timing; the MP4 files preserve the original recordings. These experiments show the recorded solver behavior, including tracking errors, rather than establishing convergence for every example.
 
 ### Path-following experiments
 
@@ -21,22 +21,6 @@ All eight original THA2 recordings are included below. Select a preview or its *
 | --- | --- |
 | [![Square path preview](../docs/assets/tha2-videos/square-path.gif)](results/videos/Square_Path.mp4) | [![Raster path preview](../docs/assets/tha2-videos/raster-path.gif)](results/videos/Raster_Path.mp4) |
 | [Watch MP4 · 5.3 s](results/videos/Square_Path.mp4) | [Watch MP4 · 5.3 s](results/videos/Raster_Path.mp4) |
-
-### Inverse kinematics
-
-| Robot motion | Metrics |
-| --- | --- |
-| [![Inverse-kinematics robot motion preview](../docs/assets/tha2-videos/ik-robot-motion.gif)](results/videos/ik_robot_motion.mp4) | [![Inverse-kinematics metrics preview](../docs/assets/tha2-videos/ik-metrics.gif)](results/videos/ik_metrics.mp4) |
-| [Watch MP4 · 3.4 s](results/videos/ik_robot_motion.mp4) | [Watch MP4 · 3.4 s](results/videos/ik_metrics.mp4) |
-
-### Redundancy resolution
-
-| Robot snapshot | Metrics |
-| --- | --- |
-| [![Redundancy-resolution robot snapshot](../docs/assets/tha2-videos/redundancy-robot-motion.gif)](results/videos/redun_robot_motion.mp4) | [![Redundancy-resolution metrics preview](../docs/assets/tha2-videos/redundancy-metrics.gif)](results/videos/redun_metrics.mp4) |
-| [Watch MP4 · 0.5 s](results/videos/redun_robot_motion.mp4) | [Watch MP4 · 0.9 s](results/videos/redun_metrics.mp4) |
-
-The supplied `redun_robot_motion.mp4` contains just one frame. It is retained as an original snapshot, not presented as a complete motion sequence.
 
 To rebuild the previews from the included recordings, run from the repository root:
 

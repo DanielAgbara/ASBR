@@ -14,10 +14,6 @@ VIDEOS = [
     ('Helix_Path.mp4', 'helix-path', 'Helix path'),
     ('Square_Path.mp4', 'square-path', 'Square path'),
     ('Raster_Path.mp4', 'raster-path', 'Raster path'),
-    ('ik_robot_motion.mp4', 'ik-robot-motion', 'Inverse kinematics: robot motion'),
-    ('ik_metrics.mp4', 'ik-metrics', 'Inverse kinematics: metrics'),
-    ('redun_robot_motion.mp4', 'redundancy-robot-motion', 'Redundancy resolution: robot motion'),
-    ('redun_metrics.mp4', 'redundancy-metrics', 'Redundancy resolution: metrics'),
 ]
 
 

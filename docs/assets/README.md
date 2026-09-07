@@ -13,4 +13,4 @@ The MATLAB verification helper exports the current figure from each selected dem
 
 ## THA2 video previews
 
-`tha2-videos/` contains GIF previews and JPEG posters extracted from the eight original recordings in `THA2/results/videos/`. Regenerate them with `python tools/build_video_previews.py` after installing `tools/requirements-media.txt`. Previews sample up to 32 frames across each recording and use a fixed display interval; they do not preserve original timing. The redundancy robot-motion recording has only one frame, so its preview is a still image.
+`tha2-videos/` contains GIF previews and JPEG posters extracted from the four path recordings in `THA2/results/videos/`. Regenerate them with `python tools/build_video_previews.py` after installing `tools/requirements-media.txt`. Previews sample up to 32 frames across each recording and use a fixed display interval; they do not preserve original timing.
