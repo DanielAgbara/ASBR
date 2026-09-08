@@ -79,8 +79,6 @@ The cleanup preserves the course algorithms and adds portable entry points. Earl
 
 THA2 includes original [path-following videos](THA2/results/videos). THA3 has selected original calibration figures. THA1's opening figure is newly generated from this repository. THA4's README explains the report's key limitation: a linearized wall constraint can permit temporary penetration when steps are large.
 
-Original PDF submissions are kept local because some include student identifiers, email addresses and signatures. They are excluded by `.gitignore`; public summaries are in the project READMEs.
-
 ## Credits and reuse
 
 Project authors: Daniel Agbara and Min-Geun Park. Original project code and documentation are released under the [MIT license](LICENSE), allowing use, modification and redistribution with the license notice retained. See [third-party notices](THIRD_PARTY_NOTICES.md) for the separately owned robot assets and course inputs.
